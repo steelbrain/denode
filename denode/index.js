@@ -4,7 +4,7 @@ const Path = require('path')
 const Electron = require('electron')
 
 Electron.app.on('ready', function() {
-  var win = new Electron.BrowserWindow({ width: 800, height: 600 });
+  var win = new Electron.BrowserWindow({ width: 800, height: 600, title: 'DeNode' });
   win.loadURL('file://' + Path.join(__dirname, 'index.html') + '?app=' + encodeURIComponent(process.argv[2] || ''));
   win.on('closed', function() {
     Electron.app.quit()
@@ -16,6 +16,8 @@ Electron.app.on('ready', function() {
     })
   })
   win.webContents.once('devtools-closed', function() {
-    Electron.app.quit()
+    setImmediate(function() {
+      win.close()
+    })
   })
 })

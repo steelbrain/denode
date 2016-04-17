@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Upgrade electron version
+
 ## 1.0.2
 
 - Fix a minor race condition between closing dev tools and app

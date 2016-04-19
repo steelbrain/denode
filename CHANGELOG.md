@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Fix a crash on Ubuntu
+
 ## 1.0.3
 
 - Upgrade electron version

@@ -13,11 +13,11 @@ Electron.app.on('ready', function() {
   win.webContents.once('devtools-opened', function() {
     setImmediate(function() {
       win.hide()
-    })
-  })
-  win.webContents.once('devtools-closed', function() {
-    setImmediate(function() {
-      win.close()
+      win.webContents.once('devtools-closed', function() {
+        setImmediate(function() {
+          win.close()
+        })
+      })
     })
   })
 })

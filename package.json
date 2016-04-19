@@ -18,6 +18,7 @@
     "debug",
     "profile"
   ],
+  "productName": "DeNode",
   "author": "steelbrain",
   "license": "MIT",
   "bugs": {

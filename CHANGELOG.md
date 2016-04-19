@@ -1,3 +1,7 @@
+## Upcoming
+
+- Set `productName` properly
+
 ## 1.1.0
 
 - Properly set `process.std*.isTTY`

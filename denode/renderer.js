@@ -13,6 +13,9 @@ process.stderr._write = function(chunk, _, callback) {
   debugger
   IPC.send('stderr', chunk.toString())
 }
+IPC.on('stdin', function(_, data) {
+  process.stdin.push(data)
+})
 
 const App = URL.parse(location.href, true).query.app
 if (!App) {

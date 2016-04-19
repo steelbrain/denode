@@ -1,5 +1,6 @@
 ## 1.0.5
 
+- Properly set `process.std*.isTTY`
 - Add support for `process.stdin`
 - Add support for `process.stdout` and `process.stderr`
 

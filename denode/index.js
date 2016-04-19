@@ -24,6 +24,11 @@ Electron.app.on('ready', function() {
   })
 
   win.webContents.on('dom-ready', function() {
+    win.webContents.send('setup', JSON.stringify({
+      stdoutIsTTY: process.stdout.isTTY,
+      stderrIsTTY: process.stderr.isTTY
+    }))
+
     for (let i = 0, length = STDIN.length; i < length; ++i) {
       win.webContents.send('stdin', STDIN[i])
     }

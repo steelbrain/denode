@@ -16,6 +16,11 @@ process.stderr._write = function(chunk, _, callback) {
 IPC.on('stdin', function(_, data) {
   process.stdin.push(data)
 })
+IPC.once('setup', function(_, data) {
+  const parsed = JSON.parse(data)
+  process.stdout.isTTY = parsed.stdoutIsTTY
+  process.stderr.isTTY = parsed.stderrIsTTY
+})
 
 const App = URL.parse(location.href, true).query.app
 if (!App) {

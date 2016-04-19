@@ -21,3 +21,10 @@ Electron.app.on('ready', function() {
     })
   })
 })
+
+Electron.ipcMain.on('stdout', function(_, data) {
+  process.stdout.write(data)
+})
+Electron.ipcMain.on('stderr', function(_, data) {
+  process.stderr.write(data)
+})

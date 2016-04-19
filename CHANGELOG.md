@@ -1,4 +1,4 @@
-## 1.0.5
+## 1.1.0
 
 - Properly set `process.std*.isTTY`
 - Add support for `process.stdin`

@@ -6,8 +6,18 @@ const STDIN = []
 let win
 
 Electron.app.on('ready', function() {
+  let name
+  try {
+    name = require(Path.join(process.cwd(), 'package.json')).name
+  } catch (_) { }
+  name = name || 'DeNode'
+
+  Electron.protocol.registerFileProtocol('app', function(request, callback) {
+    callback(Path.join(__dirname, 'index.html'))
+  })
+
   win = new Electron.BrowserWindow({ width: 800, height: 600, title: 'DeNode' });
-  win.loadURL('file://' + Path.join(__dirname, 'index.html') + '?app=' + encodeURIComponent(process.argv[2] || ''));
+  win.loadURL(`app://${name}`)
   win.on('closed', function() {
     Electron.app.quit()
   })
@@ -26,7 +36,8 @@ Electron.app.on('ready', function() {
   win.webContents.on('dom-ready', function() {
     win.webContents.send('setup', JSON.stringify({
       stdoutIsTTY: process.stdout.isTTY,
-      stderrIsTTY: process.stderr.isTTY
+      stderrIsTTY: process.stderr.isTTY,
+      request: process.argv[2] || ''
     }))
 
     for (let i = 0, length = STDIN.length; i < length; ++i) {

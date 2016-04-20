@@ -3,6 +3,36 @@
 
   <body>
     <h1 align="center">World Domination</h1>
-    <script>require('./renderer')</script>
+    <script>
+      (function() {
+        'use strict'
+
+        const Path = require('path')
+        const IPC = require('electron').ipcRenderer
+
+        IPC.once('setup', function(_, data) {
+          const parsed = JSON.parse(data)
+          process.stdout.isTTY = parsed.stdoutIsTTY
+          process.stderr.isTTY = parsed.stderrIsTTY
+          process.stdout._write = function(chunk, _, callback) {
+            process.nextTick(callback)
+            IPC.send('stdout', chunk.toString())
+          }
+          process.stderr._write = function(chunk, _, callback) {
+            process.nextTick(callback)
+            IPC.send('stderr', chunk.toString())
+          }
+          IPC.on('stdin', function(_, data) {
+            process.stdin.push(data)
+          })
+          const App = parsed.request
+          if (!App) {
+            console.warn('No application specified')
+          } else {
+            console.log(require(Path.resolve(process.cwd(), App)))
+          }
+        })
+      })()
+    </script>
   </body>
 </html>

@@ -4,17 +4,20 @@ DeNode
 DeNode is short for Debug Node, it's a tiny wrapper around [Electron][1] that lets you debug your [Node][2] apps using Chrome Dev Tools :tada:
 
 ## Installation
-```
+```sh
 npm install -g denode
 ```
 
 ## Usage
 
-```
+```sh
 denode
+denode .
 denode ./index.js
 denode `which browserify`
 ```
+
+*Note*: `denode .` uses the `main` property in the project's `package.json`.
 
 To reload the app, simply press CTRL + R on Linux/Windows and CMD + R on Mac OSX.
 

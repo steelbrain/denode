@@ -1,4 +1,4 @@
-## Upcoming
+## 1.2.0
 
 - Set `productName` properly
 - Show the name of the app in topbar

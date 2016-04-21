@@ -12,12 +12,16 @@ Electron.app.on('ready', function() {
   } catch (_) { }
   name = name || 'DeNode'
 
-  Electron.protocol.registerFileProtocol('app', function(request, callback) {
-    callback(Path.join(__dirname, 'index.html'))
+  Electron.protocol.interceptFileProtocol('file', function(request, callback) {
+    if (request.url === `file:///app-${name}`) {
+      callback(Path.join(__dirname, 'index.html'))
+    } else {
+      callback(request.url)
+    }
   })
 
   win = new Electron.BrowserWindow({ width: 800, height: 600, title: 'DeNode' });
-  win.loadURL(`app://${name}`)
+  win.loadURL(`file:///app-${name}`)
   win.on('closed', function() {
     Electron.app.quit()
   })

@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Fix a bug with source maps introduced in v1.2.0
+
 ## 1.2.0
 
 - Set `productName` properly

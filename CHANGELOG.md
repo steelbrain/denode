@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Fix relative requires in console (bug introduced by v1.2.0)
+
 ## 1.2.1
 
 - Fix a bug with source maps introduced in v1.2.0

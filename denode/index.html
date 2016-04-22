@@ -25,6 +25,9 @@
           IPC.on('stdin', function(_, data) {
             process.stdin.push(data)
           })
+          __dirname = process.cwd()
+          __filename = Path.join(__dirname, 'denode')
+          module.filename = __filename
           const App = parsed.request
           if (!App) {
             console.warn('No application specified')

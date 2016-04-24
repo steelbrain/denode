@@ -6,9 +6,11 @@ const STDIN = []
 let win
 
 Electron.app.on('ready', function() {
-  let name
+  let name, opts
   try {
-    name = require(Path.join(process.cwd(), 'package.json')).name
+    let pinfo = require(Path.join(process.cwd(), 'package.json'))
+    name = pinfo.name
+    opts = pinfo.electronOpts
   } catch (_) { }
   name = name || 'DeNode'
 
@@ -20,7 +22,7 @@ Electron.app.on('ready', function() {
     }
   })
 
-  win = new Electron.BrowserWindow({ width: 800, height: 600, title: 'DeNode' });
+  win = new Electron.BrowserWindow(opts || { width: 800, height: 600, title: 'DeNode' });
   win.loadURL(`file:///app-${name}`)
   win.on('closed', function() {
     Electron.app.quit()

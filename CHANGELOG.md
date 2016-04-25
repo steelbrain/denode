@@ -1,3 +1,8 @@
+## 1.3.0
+
+- Support browser window options from the manifest
+- Support custom main for electron from the manifest
+
 ## 1.2.2
 
 - Fix relative requires in console (bug introduced by v1.2.0)

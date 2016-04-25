@@ -3,16 +3,30 @@
 const Path = require('path')
 const Electron = require('electron')
 const STDIN = []
-let win
+let window
+let request = process.argv[2]
 
 Electron.app.on('ready', function() {
-  let name, opts
-  try {
-    let pinfo = require(Path.join(process.cwd(), 'package.json'))
-    name = pinfo.name
-    opts = pinfo.electronOpts
-  } catch (_) { }
-  name = name || 'DeNode'
+  let name = 'DeNode'
+  let options = {
+    hide: true,
+    width: 800,
+    height: 800
+  }
+  if (request === './' || request === '.' || request === '.\\') {
+    try {
+      let manifestInfo = require(Path.join(process.cwd(), 'package.json'))
+      if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
+        name = manifestInfo.name
+      }
+      if (typeof manifestInfo.electronOptions === 'object' && manifestInfo.electronOptions) {
+        Object.assign(options, manifestInfo.electronOptions)
+      }
+      if (typeof manifestInfo.electronMain === 'string' && manifestInfo.electronMain) {
+        request = manifestInfo.electronMain
+      }
+    } catch (_) { }
+  }
 
   Electron.protocol.interceptFileProtocol('file', function(request, callback) {
     if (request.url === `file:///app-${name}`) {
@@ -22,32 +36,34 @@ Electron.app.on('ready', function() {
     }
   })
 
-  win = new Electron.BrowserWindow(opts || { width: 800, height: 600, title: 'DeNode' });
-  win.loadURL(`file:///app-${name}`)
-  win.on('closed', function() {
+  window = new Electron.BrowserWindow(options)
+  window.loadURL(`file:///app-${name}`)
+  window.on('closed', function() {
     Electron.app.quit()
   })
-  win.webContents.openDevTools({ detach: true })
-  win.webContents.once('devtools-opened', function() {
-    setImmediate(function() {
-      win.hide()
-      win.webContents.once('devtools-closed', function() {
-        setImmediate(function() {
-          win.close()
-        })
+  window.webContents.openDevTools({ detach: options.hide })
+  if (options.hide) {
+    window.webContents.once('devtools-opened', function() {
+      setImmediate(function() {
+          window.hide()
+          window.webContents.once('devtools-closed', function() {
+            setImmediate(function() {
+              window.close()
+            })
+          })
       })
     })
-  })
+  }
 
-  win.webContents.on('dom-ready', function() {
-    win.webContents.send('setup', JSON.stringify({
+  window.webContents.on('dom-ready', function() {
+    window.webContents.send('setup', JSON.stringify({
+      request: request,
       stdoutIsTTY: process.stdout.isTTY,
-      stderrIsTTY: process.stderr.isTTY,
-      request: process.argv[2] || ''
+      stderrIsTTY: process.stderr.isTTY
     }))
 
     for (let i = 0, length = STDIN.length; i < length; ++i) {
-      win.webContents.send('stdin', STDIN[i])
+      window.webContents.send('stdin', STDIN[i])
     }
   })
 })
@@ -60,8 +76,8 @@ Electron.ipcMain.on('stderr', function(_, data) {
 })
 process.stdin.on('data', function(chunk) {
   const stringish = chunk.toString()
-  if (win) {
-    win.webContents.send('stdin', stringish)
+  if (window) {
+    window.webContents.send('stdin', stringish)
   }
   STDIN.push(stringish)
 })

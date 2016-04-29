@@ -4,7 +4,7 @@ const Path = require('path')
 const Electron = require('electron')
 const STDIN = []
 let window
-let request = process.argv[2]
+let request = process.argv[3]
 
 Electron.app.on('ready', function() {
   let name = 'DeNode'
@@ -57,6 +57,7 @@ Electron.app.on('ready', function() {
 
   window.webContents.on('dom-ready', function() {
     window.webContents.send('setup', JSON.stringify({
+      argv: process.argv.slice(2),
       request: request,
       stdoutIsTTY: process.stdout.isTTY,
       stderrIsTTY: process.stderr.isTTY

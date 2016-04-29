@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Implement a proper support for `process.argv`
+
 ## 1.3.0
 
 - Support browser window options from the manifest

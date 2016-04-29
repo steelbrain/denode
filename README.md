@@ -14,7 +14,7 @@ npm install -g denode
 denode
 denode .
 denode ./index.js
-denode `which browserify`
+denode `which browserify` -r chalk main.js
 ```
 
 *Note*: `denode .` uses the `main` property in the project's `package.json`.

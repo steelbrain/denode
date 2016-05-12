@@ -17,8 +17,6 @@ denode ./index.js
 denode `which browserify` -r chalk main.js
 ```
 
-*Note*: `denode .` uses the `main` property in the project's `package.json`.
-
 To reload the app, simply press CTRL + R on Linux/Windows and CMD + R on Mac OSX.
 
 ## Advanced Usage

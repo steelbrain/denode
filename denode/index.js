@@ -7,7 +7,7 @@ let window
 let request = process.argv[3]
 
 Electron.app.on('ready', function() {
-  let name = 'DeNode'
+  let name = 'de-node'
   let options = {
     hide: true,
     width: 800,
@@ -19,7 +19,7 @@ Electron.app.on('ready', function() {
   } catch (_) { }
   if (manifestInfo && process.argv.indexOf('--ignore-local') === -1) {
     if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
-      name = manifestInfo.name
+      name = manifestInfo.name.toLowerCase()
     }
     if (typeof manifestInfo.electronOptions === 'object' && manifestInfo.electronOptions) {
       Object.assign(options, manifestInfo.electronOptions)

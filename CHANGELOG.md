@@ -1,4 +1,4 @@
-## Upcoming
+## 1.5.0
 
 - Add `--ignore-local` option
 - Make sure app names in the dev tool header are lowercased

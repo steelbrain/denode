@@ -13,19 +13,20 @@ Electron.app.on('ready', function() {
     width: 800,
     height: 800
   }
-  if (request === './' || request === '.' || request === '.\\') {
-    try {
-      let manifestInfo = require(Path.join(process.cwd(), 'package.json'))
-      if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
-        name = manifestInfo.name
-      }
-      if (typeof manifestInfo.electronOptions === 'object' && manifestInfo.electronOptions) {
-        Object.assign(options, manifestInfo.electronOptions)
-      }
-      if (typeof manifestInfo.electronMain === 'string' && manifestInfo.electronMain) {
-        request = manifestInfo.electronMain
-      }
-    } catch (_) { }
+  let manifestInfo
+  try {
+    manifestInfo = require(Path.join(process.cwd(), 'package.json'))
+  } catch (_) { }
+  if (manifestInfo) {
+    if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
+      name = manifestInfo.name
+    }
+    if (typeof manifestInfo.electronOptions === 'object' && manifestInfo.electronOptions) {
+      Object.assign(options, manifestInfo.electronOptions)
+    }
+  }
+  if (manifestInfo && (request === './' || request === '.' || request === '.\\') && typeof manifestInfo.electronMain === 'string' && manifestInfo.electronMain) {
+    request = manifestInfo.electronMain
   }
 
   Electron.protocol.interceptFileProtocol('file', function(request, callback) {

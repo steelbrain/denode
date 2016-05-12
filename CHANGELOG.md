@@ -1,3 +1,7 @@
+## Upcoming
+
+- Try to read and apply options from local manifest even if request is not `./`
+
 ## 1.4.0
 
 - Implement a proper support for `process.argv`

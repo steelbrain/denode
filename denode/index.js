@@ -17,7 +17,7 @@ Electron.app.on('ready', function() {
   try {
     manifestInfo = require(Path.join(process.cwd(), 'package.json'))
   } catch (_) { }
-  if (manifestInfo) {
+  if (manifestInfo && process.argv.indexOf('--ignore-local') === -1) {
     if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
       name = manifestInfo.name
     }

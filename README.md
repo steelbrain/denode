@@ -23,14 +23,14 @@ To reload the app, simply press CTRL + R on Linux/Windows and CMD + R on Mac OSX
 
 ## Advanced Usage
 
-DeNode tries to load options from the local `package.json` file. Here are the magic fields it understands
+DeNode tries to load options from the local `package.json` file, you can suppress this behavior by doing `--ignore-local`. Here are the magic fields it understands
 
-```json
+```js
 {
   "name": "my-cool-app",
   "electronMain": "./electron.js",
   "electronOptions": {
-    "hide": false
+    // All of BrowserWindow options are accepted here
   }
 }
 ```

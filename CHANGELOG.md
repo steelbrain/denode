@@ -1,3 +1,7 @@
+## 1.5.1
+
+- Show version information when `--version` or `-v` is passed
+
 ## 1.5.0
 
 - Add `--ignore-local` option

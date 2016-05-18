@@ -1,3 +1,7 @@
+## 1.5.2
+
+- Upgrade electron 0.37.8
+
 ## 1.5.1
 
 - Show version information when `--version` or `-v` is passed

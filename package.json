@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/steelbrain/denode#readme",
   "dependencies": {
-    "electron-prebuilt": "^0.37.6"
+    "electron-prebuilt": "^0.37.8"
   }
 }

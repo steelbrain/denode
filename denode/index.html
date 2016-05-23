@@ -33,7 +33,7 @@
           if (!App) {
             console.warn('No application specified')
           } else {
-            console.log(require(Path.resolve(process.cwd(), App)))
+            console.log('export of main file', require(Path.resolve(process.cwd(), App)))
           }
         })
       })()

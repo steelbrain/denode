@@ -1,3 +1,7 @@
+## Upcoming
+
+- Make a `console.log` message on init more verbose
+
 ## 1.5.2
 
 - Upgrade electron 0.37.8

@@ -1,3 +1,7 @@
+## 1.6.1
+
+- Fix a few issues with last release
+
 ## 1.6.0
 
 - Add insecure mode where certificate errors are ignored, it can be triggered by setting the `DENODE_INSECURE` env param or by setting `denodeOptions` to `["DENODE_INSECURE"]` in manifest.

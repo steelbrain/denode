@@ -29,7 +29,10 @@ DeNode tries to load options from the local `package.json` file, you can suppres
   "electronMain": "./electron.js",
   "electronOptions": {
     // All of BrowserWindow options are accepted here
-  }
+  },
+  "denodeOptions": [
+    "DENODE_INSECURE" // Ignore certificate errors
+  ]
 }
 ```
 The `electronOptions` field accepts all of [`BrowserWindow`][3] options, if `electronMain` is present, it is used instead of `main`.

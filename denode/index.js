@@ -1,10 +1,15 @@
 'use strict'
 
+const App = require('app')
 const Path = require('path')
 const Electron = require('electron')
 const STDIN = []
 let window
 let request = process.argv[3]
+
+if (process.env.hasOwnProperty('DENODE_INSECURE') || (manifestInfo && manifestInfo.denodeOptions.indexOf('DENODE_INSECURE') !== -1)) {
+  App.commandLine.appendSwitch('--ignore-certificate-errors')
+}
 
 Electron.app.on('ready', function() {
   let name = 'de-node'

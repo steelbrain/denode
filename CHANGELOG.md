@@ -1,5 +1,6 @@
-## Upcoming
+## 1.6.0
 
+- Add insecure mode where certificate errors are ignored, it can be triggered by setting the `DENODE_INSECURE` env param or by setting `denodeOptions` to `["DENODE_INSECURE"]` in manifest.
 - Make a `console.log` message on init more verbose
 
 ## 1.5.2

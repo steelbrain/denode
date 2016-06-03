@@ -1,6 +1,6 @@
 {
   "name": "denode",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Debug node apps like a pro",
   "bin": {
     "denode": "./index.js"

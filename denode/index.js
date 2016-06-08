@@ -29,7 +29,7 @@ if (manifestInfo && (request === './' || request === '.' || request === '.\\') &
   request = manifestInfo.electronMain
 }
 
-if (process.env.hasOwnProperty('DENODE_INSECURE') || (manifestInfo && manifestInfo.denodeOptions.indexOf('DENODE_INSECURE') !== -1)) {
+if (process.env.hasOwnProperty('DENODE_INSECURE') || (manifestInfo && manifestInfo.denodeOptions && manifestInfo.denodeOptions.indexOf('DENODE_INSECURE') !== -1)) {
   App.commandLine.appendSwitch('--ignore-certificate-errors')
 }
 

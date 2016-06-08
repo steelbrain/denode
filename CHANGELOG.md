@@ -1,3 +1,7 @@
+## 1.6.2
+
+- Fix indexOf undefined error (#11)
+
 ## 1.6.1
 
 - Fix a few issues with last release

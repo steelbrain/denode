@@ -1,13 +1,11 @@
 'use strict'
 
-const App = require('app')
 const Path = require('path')
 const Electron = require('electron')
 const STDIN = []
 let window
 let request = process.argv[3]
 
-let name = 'de-node'
 let options = {
   hide: true,
   width: 800,
@@ -18,9 +16,6 @@ try {
   manifestInfo = require(Path.join(process.cwd(), 'package.json'))
 } catch (_) { }
 if (manifestInfo && process.argv.indexOf('--ignore-local') === -1) {
-  if (typeof manifestInfo.name === 'string' && manifestInfo.name) {
-    name = manifestInfo.name.toLowerCase()
-  }
   if (typeof manifestInfo.electronOptions === 'object' && manifestInfo.electronOptions) {
     Object.assign(options, manifestInfo.electronOptions)
   }
@@ -30,20 +25,13 @@ if (manifestInfo && (request === './' || request === '.' || request === '.\\') &
 }
 
 if (process.env.hasOwnProperty('DENODE_INSECURE') || (manifestInfo && manifestInfo.denodeOptions && manifestInfo.denodeOptions.indexOf('DENODE_INSECURE') !== -1)) {
-  App.commandLine.appendSwitch('--ignore-certificate-errors')
+  Electron.app.commandLine.appendSwitch('--ignore-certificate-errors')
 }
 
 Electron.app.on('ready', function() {
-  Electron.protocol.interceptFileProtocol('file', function(request, callback) {
-    if (request.url === `file:///app-${name}`) {
-      callback(Path.join(__dirname, 'index.html'))
-    } else {
-      callback(request.url)
-    }
-  })
 
   window = new Electron.BrowserWindow(options)
-  window.loadURL(`file:///app-${name}`)
+  window.loadURL(`file://${Path.join(__dirname, 'index.html')}`)
   window.on('closed', function() {
     Electron.app.quit()
   })

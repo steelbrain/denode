@@ -7,6 +7,7 @@
       (function() {
         'use strict'
 
+        const FS = require('fs')
         const Path = require('path')
         const IPC = require('electron').ipcRenderer
 
@@ -33,7 +34,8 @@
           if (!App) {
             console.warn('No application specified')
           } else {
-            console.log('export of main file', require(Path.resolve(process.cwd(), App)))
+            const resolvedPath = FS.realpathSync(Path.resolve(process.cwd(), App))
+            console.log('export of main file', require(resolvedPath))
           }
         })
       })()

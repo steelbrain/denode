@@ -1,5 +1,6 @@
-## 1.6.4
+## 1.7.0
 
+- Upgrade Electron to `v1.3.3^` (from `v0.37.8^`)
 - Fix tty support by adding `rows` and `columns` to `process.stdout` and `process.stderr`
 
 ## 1.6.3

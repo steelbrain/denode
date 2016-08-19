@@ -53,8 +53,16 @@ Electron.app.on('ready', function() {
     window.webContents.send('setup', JSON.stringify({
       argv: process.argv.slice(2),
       request: request,
-      stdoutIsTTY: process.stdout.isTTY,
-      stderrIsTTY: process.stderr.isTTY
+      stdout: {
+        isTTY: process.stdout.isTTY,
+        columns: process.stdout.columns,
+        rows: process.stdout.rows,
+      },
+      stderr: {
+        isTTY: process.stderr.isTTY,
+        columns: process.stderr.columns,
+        rows: process.stderr.rows,
+      },
     }))
 
     for (let i = 0, length = STDIN.length; i < length; ++i) {

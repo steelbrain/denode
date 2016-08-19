@@ -1,3 +1,7 @@
+## 1.6.4
+
+- Fix tty support by adding `rows` and `columns` to `process.stdout` and `process.stderr`
+
 ## 1.6.3
 
 - Random bugfixes

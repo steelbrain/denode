@@ -2,7 +2,7 @@
 'use strict'
 
 var child_process = require('child_process')
-var electron_path = require('electron-prebuilt')
+var electron_path = require('electron')
 var show_version = process.argv.indexOf('--version') === 2 || process.argv.indexOf('-v') === 2
 
 if (show_version) {

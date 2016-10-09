@@ -1,3 +1,8 @@
+## 1.8.0
+
+- Fix a deprecation warning
+- Upgrade Electron to `v1.4.3`
+
 ## 1.7.0
 
 - Upgrade Electron to `v1.3.3^` (from `v0.37.8^`)

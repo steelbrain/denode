@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/steelbrain/denode#readme",
   "dependencies": {
-    "electron": "^1.4.2"
+    "electron": "1.4.2"
   }
 }

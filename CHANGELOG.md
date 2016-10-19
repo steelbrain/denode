@@ -1,3 +1,7 @@
+## 1.8.2
+
+- Retry on pinning dependencies **facepalm**
+
 ## 1.8.1
 
 - Pin Electron to `v1.4.2` (Workaround for electron/electron#7519)

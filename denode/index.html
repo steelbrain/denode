@@ -7,6 +7,9 @@
       (function() {
         'use strict'
 
+        // Override process.exit
+        process.exit = function() { }
+
         const FS = require('fs')
         const Path = require('path')
         const IPC = require('electron').ipcRenderer

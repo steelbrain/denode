@@ -1,3 +1,7 @@
+## 1.9.0
+
+- Add Electron context menu, DevTron and ElectronDebug
+
 ## 1.8.3
 
 - Fix a bug where some apps would terminate the renderer by overriding `process.exit`

@@ -6,6 +6,9 @@ const STDIN = []
 let window
 let request = process.argv[3]
 
+require('electron-debug')({ showDevTools: true })
+require('electron-context-menu')()
+
 let options = {
   hide: true,
   width: 800,

@@ -26,6 +26,7 @@
     "devtron": "^1.4.0",
     "electron": "^1.4.15",
     "electron-context-menu": "^0.8.0",
-    "electron-debug": "^1.1.0"
+    "electron-debug": "^1.1.0",
+    "electron-devtools-installer": "^2.1.0"
   }
 }

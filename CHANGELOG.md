@@ -1,3 +1,7 @@
+## 1.10.1
+
+- Fix `denode --version`
+
 ## 1.10.0
 
 - Upgrade to Electron `v1.4.15`

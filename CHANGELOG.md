@@ -1,3 +1,9 @@
+## 1.10.0
+
+- Upgrade to Electron `v1.4.15`
+- Add react developer tools extension
+- Internal cleanups and maintenance
+
 ## 1.9.0
 
 - Add Electron context menu, DevTron and ElectronDebug

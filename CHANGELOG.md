@@ -1,3 +1,7 @@
+## 1.10.2
+
+- Fix installation of dev tools
+
 ## 1.10.1
 
 - Fix `denode --version`

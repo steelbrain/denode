@@ -1,3 +1,7 @@
+## 1.10.4
+
+- Fix invalid process.argv propogation
+
 ## 1.10.3
 
 - Fix frame not showing

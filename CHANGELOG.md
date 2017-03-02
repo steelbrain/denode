@@ -1,3 +1,7 @@
+## 1.10.3
+
+- Fix frame not showing
+
 ## 1.10.2
 
 - Fix installation of dev tools

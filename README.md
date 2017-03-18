@@ -1,6 +1,8 @@
 DeNode
 ======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/steelbrain/denode.svg)](https://greenkeeper.io/)
+
 DeNode is short for Debug Node, it's a tiny wrapper around [Electron][1] that lets you debug your [Node][2] apps using Chrome Dev Tools :tada:
 
 ## Installation

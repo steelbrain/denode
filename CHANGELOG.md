@@ -1,3 +1,7 @@
+## 1.10.5
+
+- Defer process execution by 1 second to ensure that dev tools are opened
+
 ## 1.10.4
 
 - Fix invalid process.argv propogation

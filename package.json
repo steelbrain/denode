@@ -3,7 +3,7 @@
   "version": "1.10.5",
   "description": "Debug node apps like a pro",
   "bin": {
-    "denode": "./browser/index.js"
+    "denode": "./browser/cli.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,8 @@
   },
   "homepage": "https://github.com/steelbrain/denode#readme",
   "dependencies": {
-    "devtron": "^1.4.0",
-    "electron": "^1.4.15",
-    "electron-context-menu": "^0.8.0",
-    "electron-debug": "^1.1.0",
-    "electron-devtools-installer": "^2.1.0"
+    "electron": "^8.2.1",
+    "electron-context-menu": "^0.16.0",
+    "electron-debug": "^3.0.1"
   }
 }
